@@ -34,8 +34,8 @@ class AppointmentController extends Controller
 
     // Definisco le regole di validazione
     $rules = [
-        'datetime'=> 'required|date|after:now',
-        'notes'=>'nullable|string',
+        'datetime'=> 'required|date|after:now|before_or_equal:2024-12-31',
+        'notes'=>'nullable|string|max:30',
     ];
 
     // Definisco i messaggi di errore personalizzati
@@ -43,6 +43,8 @@ class AppointmentController extends Controller
         'datetime.required' => 'Il campo Data e Ora è obbligatorio.',
         'datetime.date' => 'Il campo Data e Ora deve essere una data valida.',
         'datetime.after' => 'Il campo Data e Ora deve essere maggiore di quella attuale.',
+        'datetime.before_or_equal' => 'Il campo Data e Ora deve essere impostato massimo al 31 Dicembre 2024',
+        'notes.max' => 'Nel campo Note puoi scrivere massimo 30 caratteri',
     ];
 
     $validatedData = $request->validate($rules, $messages);

@@ -37,6 +37,9 @@
               <input class="app-form-control body1" type="datetime-local" name="datetime" placeholder="Data e ora">
             </div>
             <div class="app-form-group message">
+                @error('notes')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
               <input class="app-form-control body1" name="notes" placeholder="Aggiungi una nota"></input>
             </div>
             <div class="app-form-group buttons">
